@@ -25,9 +25,10 @@
 
 <style>
     .about-me {
-        background: #000;
         color: #fff;
         padding: 0;
+        position: relative; /* Added to position the pseudo-element */
+        margin-top: 60px; /* Added top margin to push black background down */
     }
 
     /* New black banner for title */
@@ -74,5 +75,17 @@
 
     .about-text strong {
         font-weight: 700;
+    }
+
+    /* Added white horizontal line border at bottom */
+    .about-me::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
 </style>
