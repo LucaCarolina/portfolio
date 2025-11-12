@@ -11,7 +11,7 @@ const { pageTitle } = Astro.props;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
-    <!-- Added Space Grotesk font from Google Fonts -->
+    <!-- Added Helvetica font stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,13 +20,12 @@ const { pageTitle } = Astro.props;
     />
     <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
     <style>
+      /* Removed max-width restriction to allow full-width responsive design */
       main {
-        min-height: 100vh;
-        max-width: 430px;
-        margin: 0 auto;
+        background: #000;
       }
-    </style></head
-  >
+    </style>
+  </head>
 
   <body>
     <main>
