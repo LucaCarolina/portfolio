@@ -8,47 +8,46 @@
         <button class="menu-btn">
             <span></span>
             <span></span>
-            <span></span>
         </button>
     </div>
 
-    <div class="hero-image">
-        <img src="/img/intro.png" alt="Carolina Lima" />
-    </div>
+    <div class="hero-image-wrapper">
+        <img src="/img/intro.png" alt="Carolina Luca" class="hero-image" />
 
-    <div class="creative-grid">
-        <div class="grid-letters">
-            <span>C</span>
-            <span>R</span>
-            <span>E</span>
-            <span>A</span>
-            <span>T</span>
-            <span>I</span>
-            <span>V</span>
-            <span>E</span>
-        </div>
-        <div class="grid-letters">
-            <span>D</span>
-            <span>E</span>
-            <span>S</span>
-            <span>I</span>
-            <span>G</span>
-            <span>N</span>
-            <span>E</span>
-            <span>R</span>
+        <div class="creative-grid">
+            <div class="grid-row">
+                <div class="grid-cell">C</div>
+                <div class="grid-cell">R</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">A</div>
+                <div class="grid-cell">T</div>
+                <div class="grid-cell">I</div>
+                <div class="grid-cell">V</div>
+                <div class="grid-cell">E</div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">D</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">S</div>
+                <div class="grid-cell">I</div>
+                <div class="grid-cell">G</div>
+                <div class="grid-cell">N</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">R</div>
+            </div>
         </div>
     </div>
 
     <div class="subtitle">
-        <p class="devine-student">Devine Student 23'</p>
+        <p class="devine-student">Devine Student 07</p>
     </div>
 </section>
 
 <style>
     .hero {
-        background: #000;
-        color: #fff;
-        padding: 20px;
+        background: #fff;
+        color: #000;
+        padding: 80px 20px 40px;
         position: relative;
     }
 
@@ -56,7 +55,13 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 20px;
+        z-index: 1000;
     }
 
     .name {
@@ -65,6 +70,7 @@
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: 0.5px;
+        color: #000;
     }
 
     .menu-btn {
@@ -81,62 +87,71 @@
         display: block;
         width: 24px;
         height: 2px;
-        background: #fff;
+        background: #000;
+    }
+
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        margin: 20px 0 0;
     }
 
     .hero-image {
-        width: 100%;
-        margin: 30px 0;
-        position: relative;
-    }
-
-    .hero-image img {
         width: 100%;
         height: auto;
         display: block;
     }
 
+    /* Moved grid slightly lower from center */
     .creative-grid {
+        position: absolute;
+        top: 70%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
         display: flex;
         flex-direction: column;
-        gap: 0;
-        margin: 30px 0;
     }
 
-    .grid-letters {
+    .grid-row {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        gap: 0;
-        border-top: 1px solid #fff;
+        border-top: 1px solid #000;
     }
 
-    .grid-letters:last-child {
-        border-bottom: 1px solid #fff;
+    .grid-row:last-child {
+        border-bottom: 1px solid #000;
     }
 
-    .grid-letters span {
+    .grid-cell {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 24px;
+        font-size: 40px;
         font-weight: 500;
         text-align: center;
-        padding: 15px 0;
-        border-right: 1px solid #fff;
+        padding: 12px 0;
+        border-right: 1px solid #000;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
     }
 
-    .grid-letters span:first-child {
-        border-left: 1px solid #fff;
+    .grid-cell:first-child {
+        border-left: 1px solid #000;
+    }
+
+    .grid-cell.empty {
+        background: transparent;
     }
 
     .subtitle {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     .devine-student {
-        font-family: "Helvetica", sans-serif;
+        font-family: "Helvetica", Arial, sans-serif;
         font-size: 14px;
         font-weight: 300;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
         margin: 0;
     }
 </style>
