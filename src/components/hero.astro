@@ -5,11 +5,24 @@
 <section class="hero">
     <div class="header">
         <div class="name">CAROLINA<br />LUCA</div>
-        <button class="menu-btn">
+        <button class="menu-btn" id="menuToggle">
+            <!-- Changed back to 2 spans for hamburger menu -->
             <span></span>
             <span></span>
         </button>
     </div>
+
+    <!-- Added dropdown navigation menu -->
+    <nav class="dropdown-menu" id="dropdownMenu">
+        <ul class="menu-list">
+            <li><a href="#home" class="menu-link">HOME</a></li>
+            <li><a href="#about" class="menu-link">ABOUT ME</a></li>
+            <li><a href="#experience" class="menu-link">EXPERIENCE</a></li>
+            <li><a href="#works" class="menu-link">WORKS</a></li>
+            <li><a href="#skills" class="menu-link">SKILLS</a></li>
+            <li><a href="#contact" class="menu-link">CONTACT</a></li>
+        </ul>
+    </nav>
 
     <div class="hero-image-wrapper">
         <img src="/img/intro.png" alt="Carolina Luca" class="hero-image" />
@@ -44,7 +57,7 @@
 
     <div class="intro-text">
         <p class="intro-p">
-            I’m Carolina — a hybrid designer weaving technology and creativity
+            I'm Carolina — a hybrid designer weaving technology and creativity
             to shape unique, interactive digital experiences.
         </p>
     </div>
@@ -60,14 +73,14 @@
     .header {
         display: flex;
         justify-content: space-between;
-        align-items: center; /* Changed from flex-start to center to align menu button with name text */
+        align-items: center;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         background: #fff;
         padding: 20px;
-        z-index: 1000;
+        z-index: 1002;
     }
 
     .name {
@@ -79,15 +92,17 @@
         color: #000;
     }
 
-    /* Removed absolute positioning and centering - now aligns with name vertically */
+    /* Fixed menu button so X is fully visible */
     .menu-btn {
         background: none;
         border: none;
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        padding: 0;
+        gap: 6px;
+        padding: 8px;
+        z-index: 1003;
+        position: relative;
     }
 
     .menu-btn span {
@@ -95,6 +110,83 @@
         width: 24px;
         height: 2px;
         background: #000;
+        transition: all 0.3s ease;
+    }
+
+    /* Updated X button animation for 2 spans - rotate both lines to form X */
+    .menu-btn.active span:first-child {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -12px;
+        margin-top: -1px;
+    }
+
+    .menu-btn.active span:last-child {
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -12px;
+        margin-top: -1px;
+    }
+
+    /* Fixed dropdown to be white background, cover full width, and sit below header */
+    .dropdown-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 50vh;
+        background: #fff;
+        padding-top: 80px;
+        padding-bottom: 100px; /* Increased padding-bottom for more white space below CONTACT */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+    }
+
+    .dropdown-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .menu-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu-list li {
+        margin: 0;
+    }
+
+    /* Black text on white background with proper spacing */
+    .menu-link {
+        display: block;
+        padding: 15px 30px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #000;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .menu-link:hover {
+        color: rgba(0, 0, 0, 0.5);
     }
 
     .hero-image-wrapper {
@@ -109,7 +201,6 @@
         display: block;
     }
 
-    /* Moved grid slightly lower from center */
     .creative-grid {
         position: absolute;
         top: 70%;
@@ -162,13 +253,12 @@
         margin: 0;
     }
 
-    /* Added styling for intro text with Space Grotesk Light */
     .intro-text {
         text-align: center;
         max-width: 600px;
         margin: 30px auto 0;
         padding: 0 20px;
-        margin-bottom: 60px; /* Added bottom margin for spacing before next section */
+        margin-bottom: 60px;
     }
 
     .intro-p {
@@ -180,3 +270,56 @@
         color: #000;
     }
 </style>
+
+<!-- Added JavaScript for dropdown toggle and smooth scrolling -->
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const menuLinks = document.querySelectorAll(".menu-link");
+
+    // Toggle dropdown menu
+    menuToggle?.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        dropdownMenu?.classList.toggle("active");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (
+            !menuToggle?.contains(e.target as Node) &&
+            !dropdownMenu?.contains(e.target as Node)
+        ) {
+            menuToggle?.classList.remove("active");
+            dropdownMenu?.classList.remove("active");
+        }
+    });
+
+    // Smooth scroll to sections and close menu
+    menuLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const href = link.getAttribute("href");
+
+            if (href === "#home") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            } else {
+                const targetId = href?.slice(1);
+                const targetSection = document.getElementById(targetId || "");
+
+                if (targetSection) {
+                    const headerHeight = 60; // Account for fixed header
+                    const targetPosition =
+                        targetSection.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth",
+                    });
+                }
+            }
+
+            // Close menu after clicking
+            menuToggle?.classList.remove("active");
+            dropdownMenu?.classList.remove("active");
+        });
+    });
+</script>
