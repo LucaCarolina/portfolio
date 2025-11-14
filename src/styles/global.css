@@ -1,14 +1,15 @@
 @font-face {
-    font-family: 'Space Grotesk';
-    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
-    font-weight: 300 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -44,7 +45,7 @@ img {
   --fs-l: 1.5rem;
   --fs-h1: 4rem;
 
-  --c-dark: #000000;
+  --c-dark: #101010;
   --c-light: #ffffff;
   --c-mid: #999999;
 
