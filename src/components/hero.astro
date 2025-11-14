@@ -11,24 +11,25 @@ import Navigation from "./navigation.astro";
 
         <div class="creative-grid">
             <div class="grid-row">
-                <div class="grid-cell">C</div>
-                <div class="grid-cell">R</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">A</div>
-                <div class="grid-cell">T</div>
-                <div class="grid-cell">I</div>
-                <div class="grid-cell">V</div>
-                <div class="grid-cell">E</div>
+                <!-- Added data-letter attributes to store correct letters -->
+                <div class="grid-cell" data-letter="C">C</div>
+                <div class="grid-cell" data-letter="R">R</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="A">A</div>
+                <div class="grid-cell" data-letter="T">T</div>
+                <div class="grid-cell" data-letter="I">I</div>
+                <div class="grid-cell" data-letter="V">V</div>
+                <div class="grid-cell" data-letter="E">E</div>
             </div>
             <div class="grid-row">
-                <div class="grid-cell">D</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">S</div>
-                <div class="grid-cell">I</div>
-                <div class="grid-cell">G</div>
-                <div class="grid-cell">N</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">R</div>
+                <div class="grid-cell" data-letter="D">D</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="S">S</div>
+                <div class="grid-cell" data-letter="I">I</div>
+                <div class="grid-cell" data-letter="G">G</div>
+                <div class="grid-cell" data-letter="N">N</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="R">R</div>
             </div>
         </div>
     </div>
@@ -134,3 +135,32 @@ import Navigation from "./navigation.astro";
         color: #000;
     }
 </style>
+
+<!-- Added script to animate letter shuffling -->
+<script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const cells = document.querySelectorAll(".grid-cell");
+    const intervalTime = 50; // Update every 50ms
+
+    cells.forEach((cell, index) => {
+        const correctLetter = cell.getAttribute("data-letter");
+        // Stagger the stop time for each letter (100ms apart)
+        const stopTime = 1500 + index * 100; // Start stopping at 1.5s, each letter 100ms after the previous
+        let elapsed = 0;
+
+        const interval = setInterval(() => {
+            elapsed += intervalTime;
+
+            if (elapsed >= stopTime) {
+                // Set to correct letter and stop
+                cell.textContent = correctLetter;
+                clearInterval(interval);
+            } else {
+                // Show random letter
+                const randomLetter =
+                    letters[Math.floor(Math.random() * letters.length)];
+                cell.textContent = randomLetter;
+            }
+        }, intervalTime);
+    });
+</script>
