@@ -1,0 +1,181 @@
+---
+// Hero section with creative typography
+---
+
+<section class="hero">
+    <div class="header">
+        <div class="name">CAROLINA<br />LUCA</div>
+        <button class="menu-btn">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="hero-image-wrapper">
+        <img src="/img/intro.png" alt="Carolina Luca" class="hero-image" />
+
+        <div class="creative-grid">
+            <div class="grid-row">
+                <div class="grid-cell">C</div>
+                <div class="grid-cell">R</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">A</div>
+                <div class="grid-cell">T</div>
+                <div class="grid-cell">I</div>
+                <div class="grid-cell">V</div>
+                <div class="grid-cell">E</div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">D</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">S</div>
+                <div class="grid-cell">I</div>
+                <div class="grid-cell">G</div>
+                <div class="grid-cell">N</div>
+                <div class="grid-cell">E</div>
+                <div class="grid-cell">R</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="subtitle">
+        <p class="devine-student">Devine Student 27'</p>
+    </div>
+
+    <div class="intro-text">
+        <p class="intro-p">
+            I’m Carolina — a hybrid designer weaving technology and creativity
+            to shape unique, interactive digital experiences.
+        </p>
+    </div>
+</section>
+
+<style>
+    .hero {
+        background: #fff;
+        color: #000;
+        position: relative;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .name {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0.5px;
+        color: #000;
+    }
+
+    .menu-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 0;
+    }
+
+    .menu-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #000;
+    }
+
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        margin: 20px 0 0;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Moved grid slightly lower from center */
+    .creative-grid {
+        position: absolute;
+        top: 70%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-row {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        border-top: 1px solid #000;
+    }
+
+    .grid-row:last-child {
+        border-bottom: 1px solid #000;
+    }
+
+    .grid-cell {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 40px;
+        font-weight: 500;
+        text-align: center;
+        padding: 12px 0;
+        border-right: 1px solid #000;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+    }
+
+    .grid-cell:first-child {
+        border-left: 1px solid #000;
+    }
+
+    .grid-cell.empty {
+        background: transparent;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .devine-student {
+        font-family: "Helvetica", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+
+    /* Added styling for intro text with Space Grotesk Light */
+    .intro-text {
+        text-align: center;
+        max-width: 600px;
+        margin: 30px auto 0;
+        padding: 0 20px;
+        margin-bottom: 60px; /* Added bottom margin for spacing before next section */
+    }
+
+    .intro-p {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.6;
+        margin: 0;
+        color: #000;
+    }
+</style>

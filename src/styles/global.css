@@ -1,71 +1,63 @@
-html {
-    box-sizing: border-box;
-}
-*, *::before, *::after {
-    box-sizing: inherit;
-}
-
-img {
-    max-width:  100%;
-    height: auto;
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-:root {
-    --s_2: .2rem;
-    --s_1: .5rem;
-    --s1: 1rem;
-    --s2: 1.3rem;
-    --s3: 1.5rem;
-    --s4: 2rem;
-
-    --fs-s: .8rem;
-    --fs-body: 1rem;
-    --fs-l: 1.5rem;
-    --fs-h1: 4rem;
-
-    --c-dark: #171719;
-    --c-mid: #BEBEBE;
-    --c-bg-white:#F2F2F2;
-    --c-primary: #FBFBFB;
-    --c-secondary: #9F9F9F;
-
-    --border-radius: .25rem;
-    --border-radius-xl: 1rem;
-
-    --maxContent: 60rem;
-    --defaultShadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
-
 @font-face {
-    font-family: 'Satoshi';
-    src: url('/fonts/Satoshi-Variable.ttf') format('truetype');
+    font-family: 'Space Grotesk';
+    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
     font-weight: 300 900;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Satoshi';
-    src: url('/fonts/Satoshi-VariableItalic.ttf') format('truetype');
-    font-weight: 300 900;
-    font-style: italic;
-    font-display: swap;
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+:root {
+  --s_2: .2rem;
+  --s_1: .5rem;
+  --s1: 1rem;
+  --s2: 1.3rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+
+  --fs-s: .8rem;
+  --fs-body: 1rem;
+  --fs-l: 1.5rem;
+  --fs-h1: 4rem;
+
+  --c-dark: #000000;
+  --c-light: #ffffff;
+  --c-mid: #999999;
+
+  --border-radius: .25rem;
+  --border-radius-xl: 1rem;
+
+  --maxContent: 60rem;
 }
 
 body {
-    line-height: 1.5;
-    background-color:var(--c-dark);
-    font-family: 'Satoshi', sans-serif;
+  line-height: 1.5;
+  background-color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
 }
-
