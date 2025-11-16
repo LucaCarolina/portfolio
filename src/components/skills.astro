@@ -2,20 +2,20 @@
 // Skills section
 ---
 
-<section class="skills">
+<section class="skills" id="skills">
     <h2 class="section-title">SKILLS</h2>
 
     <div class="skill-items">
         <div class="skill-item">
             <div class="skill-header">
-                <h3 class="skill-title">WEB DESIGN</h3>
+                <h3 class="skill-title">WEB DESING</h3>
                 <span class="skill-number">01</span>
             </div>
             <div class="skill-list">
                 <p>Visual Storytelling</p>
-                <p>Visual Hierarchy</p>
-                <p>Brand Identity</p>
-                <p>Wireframing</p>
+                <p>Clear Navigation</p>
+                <p>Responsive Design</p>
+                <p>Modern Layouts</p>
             </div>
         </div>
 
@@ -28,21 +28,24 @@
                 <p>Visual Design</p>
                 <p>Branding</p>
                 <p>Typography</p>
-                <p>Color Theory</p>
+                <p>Visual Identity</p>
+                <p>Campaigns</p>
+                <p>Motion</p>
             </div>
         </div>
 
         <div class="skill-item">
             <div class="skill-header">
-                <h3 class="skill-title">UX/UI</h3>
+                <h3 class="skill-title">UX-UI</h3>
                 <span class="skill-number">03</span>
             </div>
             <div class="skill-list">
-                <p>Problem-solving</p>
-                <p>User Research</p>
-                <p>Information Architecture</p>
-                <p>Prototyping</p>
-                <p>Testing</p>
+                <p>Problem solving</p>
+                <p>Wireframing</p>
+                <p>Userflows</p>
+                <p>Wireflows & flows</p>
+                <p>Prototypes</p>
+                <p>Solution making</p>
             </div>
         </div>
 
@@ -53,8 +56,8 @@
             </div>
             <div class="skill-list">
                 <p>HTML/CSS</p>
-                <p>JS/TS</p>
                 <p>GSAP</p>
+                <p>JS</p>
             </div>
         </div>
     </div>
@@ -62,17 +65,22 @@
 
 <style>
     .skills {
-        background: #000;
+        background: #101010;
         color: #fff;
         padding: 50px 20px;
     }
 
     .section-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 32px;
+        font-size: 72px;
         font-weight: 700;
-        margin: 0 0 40px 0;
-        letter-spacing: 1px;
+        margin: 0 auto 40px auto;
+        letter-spacing: 2px;
+        text-align: center;
+        color: #fff;
+        /* Added explicit width and center alignment */
+        width: 100%;
+        display: block;
     }
 
     .skill-items {
@@ -99,6 +107,7 @@
         font-weight: 600;
         margin: 0;
         letter-spacing: 0.5px;
+        color: #fff;
     }
 
     .skill-number {
@@ -119,7 +128,67 @@
         font-size: 14px;
         font-weight: 400;
         margin: 0;
-        text-align: right;
+        text-align: center;
         color: #ccc;
+    }
+
+    /* Desktop 4-column grid layout with vertical dividers */
+    @media (min-width: 1024px) {
+        .skills {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 120px;
+            /* Added margin auto for horizontal centering */
+            margin: 0 auto 80px auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .skill-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid #fff;
+        }
+
+        .skill-item {
+            border-top: none;
+            border-right: 1px solid #fff;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-item:last-child {
+            border-right: none;
+        }
+
+        .skill-header {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .skill-title {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .skill-number {
+            font-size: 48px;
+            color: #444;
+        }
+
+        .skill-list {
+            gap: 10px;
+        }
+
+        .skill-list p {
+            font-size: 16px;
+            text-align: left;
+        }
     }
 </style>

@@ -1,39 +1,41 @@
 ---
 // Hero section with creative typography
+import Navigation from "./navigation.astro";
 ---
 
+<Navigation />
+
 <section class="hero">
-    <div class="header">
-        <div class="name">CAROLINA<br />LUCA</div>
-        <button class="menu-btn">
-            <span></span>
-            <span></span>
-        </button>
-    </div>
+    <!-- Added decorative corner lines -->
+    <div class="corner-line corner-top-left"></div>
+    <div class="corner-line corner-top-right"></div>
+    <div class="corner-line corner-bottom-left"></div>
+    <div class="corner-line corner-bottom-right"></div>
 
     <div class="hero-image-wrapper">
         <img src="/img/intro.png" alt="Carolina Luca" class="hero-image" />
 
         <div class="creative-grid">
             <div class="grid-row">
-                <div class="grid-cell">C</div>
-                <div class="grid-cell">R</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">A</div>
-                <div class="grid-cell">T</div>
-                <div class="grid-cell">I</div>
-                <div class="grid-cell">V</div>
-                <div class="grid-cell">E</div>
+                <!-- Added data-letter attributes to store correct letters -->
+                <div class="grid-cell" data-letter="C">C</div>
+                <div class="grid-cell" data-letter="R">R</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="A">A</div>
+                <div class="grid-cell" data-letter="T">T</div>
+                <div class="grid-cell" data-letter="I">I</div>
+                <div class="grid-cell" data-letter="V">V</div>
+                <div class="grid-cell" data-letter="E">E</div>
             </div>
             <div class="grid-row">
-                <div class="grid-cell">D</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">S</div>
-                <div class="grid-cell">I</div>
-                <div class="grid-cell">G</div>
-                <div class="grid-cell">N</div>
-                <div class="grid-cell">E</div>
-                <div class="grid-cell">R</div>
+                <div class="grid-cell" data-letter="D">D</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="S">S</div>
+                <div class="grid-cell" data-letter="I">I</div>
+                <div class="grid-cell" data-letter="G">G</div>
+                <div class="grid-cell" data-letter="N">N</div>
+                <div class="grid-cell" data-letter="E">E</div>
+                <div class="grid-cell" data-letter="R">R</div>
             </div>
         </div>
     </div>
@@ -44,7 +46,7 @@
 
     <div class="intro-text">
         <p class="intro-p">
-            I’m Carolina — a hybrid designer weaving technology and creativity
+            I'm Carolina — a hybrid designer weaving technology and creativity
             to shape unique, interactive digital experiences.
         </p>
     </div>
@@ -55,60 +57,85 @@
         background: #fff;
         color: #000;
         position: relative;
-    }
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        padding: 20px;
-        z-index: 1000;
-    }
-
-    .name {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.2;
-        letter-spacing: 0.5px;
-        color: #000;
-    }
-
-    .menu-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
+        padding-top: 60px;
+        /* Added min-height for better spacing */
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        padding: 0;
+        justify-content: center;
+        align-items: center;
     }
 
-    .menu-btn span {
-        display: block;
-        width: 24px;
-        height: 2px;
+    /* Added decorative corner lines styling */
+    .corner-line {
+        position: absolute;
         background: #000;
     }
 
+    /* Moved top lines lower and bottom lines higher */
+    .corner-top-left,
+    .corner-top-right {
+        top: 140px;
+        width: 400px;
+        height: 2px;
+    }
+
+    .corner-top-left {
+        left: 0;
+    }
+
+    .corner-top-right {
+        right: 0;
+    }
+
+    .corner-bottom-left,
+    .corner-bottom-right {
+        bottom: 140px;
+        width: 400px;
+        height: 2px;
+    }
+
+    .corner-bottom-left {
+        left: 0;
+    }
+
+    .corner-bottom-right {
+        right: 0;
+    }
+
+    /* Hide corner lines on mobile */
+    @media (max-width: 767px) {
+        .corner-line {
+            display: none;
+        }
+    }
+
+    /* Made hero content centered on desktop */
     .hero-image-wrapper {
         position: relative;
         width: 100%;
         margin: 20px 0 0;
     }
 
+    @media (min-width: 768px) {
+        .hero-image-wrapper {
+            /* Adjusted max-width for better proportions matching the design */
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
     .hero-image {
         width: 100%;
         height: auto;
         display: block;
+        /* Added shadow for depth */
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
     }
 
-    /* Moved grid slightly lower from center */
     .creative-grid {
         position: absolute;
         top: 70%;
@@ -136,8 +163,17 @@
         text-align: center;
         padding: 12px 0;
         border-right: 1px solid #000;
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
+        /* Adjusted background opacity for better match */
+        background: rgba(180, 180, 180, 0.7);
+        color: #000;
+    }
+
+    /* Made grid cells smaller on desktop for proportional sizing */
+    @media (min-width: 768px) {
+        .grid-cell {
+            font-size: 24px;
+            padding: 8px 0;
+        }
     }
 
     .grid-cell:first-child {
@@ -150,24 +186,28 @@
 
     .subtitle {
         text-align: center;
-        margin-top: 30px;
+        /* Adjusted margin for better spacing */
+        margin-top: 40px;
     }
 
     .devine-student {
         font-family: "Helvetica", Arial, sans-serif;
-        font-size: 14px;
+        /* Increased font size slightly */
+        font-size: 16px;
         font-weight: 300;
+        /* Added italic style to match the design */
+        font-style: italic;
         letter-spacing: 1px;
         margin: 0;
     }
 
-    /* Added styling for intro text with Space Grotesk Light */
     .intro-text {
         text-align: center;
         max-width: 600px;
-        margin: 30px auto 0;
+        /* Adjusted margins for better spacing */
+        margin: 50px auto 0;
         padding: 0 20px;
-        margin-bottom: 60px; /* Added bottom margin for spacing before next section */
+        margin-bottom: 80px;
     }
 
     .intro-p {
@@ -179,3 +219,32 @@
         color: #000;
     }
 </style>
+
+<!-- Added script to animate letter shuffling -->
+<script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const cells = document.querySelectorAll(".grid-cell");
+    const intervalTime = 50; // Update every 50ms
+
+    cells.forEach((cell, index) => {
+        const correctLetter = cell.getAttribute("data-letter");
+        // Stagger the stop time for each letter (100ms apart)
+        const stopTime = 1500 + index * 100; // Start stopping at 1.5s, each letter 100ms after the previous
+        let elapsed = 0;
+
+        const interval = setInterval(() => {
+            elapsed += intervalTime;
+
+            if (elapsed >= stopTime) {
+                // Set to correct letter and stop
+                cell.textContent = correctLetter;
+                clearInterval(interval);
+            } else {
+                // Show random letter
+                const randomLetter =
+                    letters[Math.floor(Math.random() * letters.length)];
+                cell.textContent = randomLetter;
+            }
+        }, intervalTime);
+    });
+</script>

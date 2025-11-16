@@ -2,11 +2,11 @@
 // Works section
 ---
 
-<section class="works">
+<section class="works" id="works">
     <h2 class="section-title">WORKS</h2>
 
     <div class="work-items">
-        <div class="work-item">
+        <a href="/projects/thrive" class="work-item">
             <div class="work-header">
                 <div>
                     <h3 class="work-title">THRIVE</h3>
@@ -22,16 +22,19 @@
                 >
                     <path
                         d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="white"
+                        stroke="black"
                         stroke-width="2"></path>
                 </svg>
             </div>
             <div class="work-image">
                 <img src="/img/thrive.png" alt="Thrive Project" />
             </div>
-        </div>
+        </a>
 
-        <div class="work-item">
+        <!-- Added vertical divider for desktop -->
+        <div class="divider"></div>
+
+        <a href="/projects/workshop" class="work-item">
             <div class="work-header">
                 <div>
                     <h3 class="work-title">SURVIVAL WORKSHOP</h3>
@@ -47,19 +50,22 @@
                 >
                     <path
                         d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="white"
+                        stroke="black"
                         stroke-width="2"></path>
                 </svg>
             </div>
             <div class="work-image">
                 <img src="/img/workshop.png" alt="Survival Workshop" />
             </div>
-        </div>
+        </a>
 
-        <div class="work-item">
+        <!-- Added vertical divider for desktop -->
+        <div class="divider"></div>
+
+        <a href="/projects/underwhere" class="work-item">
             <div class="work-header">
                 <div>
-                    <h3 class="work-title">SURVIVAL WORKSHOP</h3>
+                    <h3 class="work-title">THE UNDERWHERE</h3>
                     <p class="work-subtitle">Story Telling</p>
                 </div>
                 <svg
@@ -72,42 +78,65 @@
                 >
                     <path
                         d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="white"
+                        stroke="black"
                         stroke-width="2"></path>
                 </svg>
             </div>
             <div class="work-image">
                 <img src="/img/underwhere.png" alt="Survival Workshop Story" />
             </div>
-        </div>
+        </a>
     </div>
 </section>
 
 <style>
     .works {
-        background: #000;
-        color: #fff;
-        padding: 0px 20px;
+        background: #fff;
+        color: #000;
+        padding: 60px 20px;
     }
 
     .section-title {
         font-family: "Space Grotesk", sans-serif;
         font-size: 72px;
         font-weight: 700;
-        margin: 0 0 40px 0;
+        margin: 0 auto 60px auto;
         letter-spacing: 1px;
+        text-align: center;
+        /* Added explicit width and center alignment */
+        width: 100%;
+        display: block;
     }
 
+    /* Updated layout to be mobile-first vertical stack */
     .work-items {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Hide dividers on mobile */
+    .divider {
+        display: none;
     }
 
     .work-item {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        /* Added border bottom for mobile */
+        border-bottom: 2px solid #000;
+        padding-bottom: 40px;
+    }
+
+    .work-item:hover {
+        transform: translateY(-4px);
     }
 
     .work-header {
@@ -118,22 +147,27 @@
 
     .work-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 24px;
-        font-weight: 600;
-        margin: 0 0 5px 0;
-        letter-spacing: 0.5px;
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: #000;
     }
 
     .work-subtitle {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 18px;
+        font-style: italic;
         margin: 0;
-        color: #999;
+        color: #000;
     }
 
     .arrow-icon {
         flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .work-item:hover .arrow-icon {
+        transform: translate(4px, -4px);
     }
 
     .work-image {
@@ -141,11 +175,48 @@
         height: auto;
         overflow: hidden;
         border-radius: 8px;
+        border: 2px solid #000;
     }
 
     .work-image img {
         width: 100%;
         height: auto;
         display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .work-item:hover .work-image img {
+        transform: scale(1.02);
+    }
+
+    /* Desktop layout: horizontal with dividers */
+    @media (min-width: 768px) {
+        .section-title {
+            font-size: 120px;
+            /* Added margin auto for horizontal centering */
+            margin: 0 auto 80px auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .work-items {
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .work-item {
+            flex: 1;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+        }
+
+        /* Show vertical dividers on desktop */
+        .divider {
+            display: block;
+            width: 2px;
+            background: #000;
+            align-self: stretch;
+        }
     }
 </style>

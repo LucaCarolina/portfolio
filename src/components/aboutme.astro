@@ -1,67 +1,152 @@
 ---
-// About Me section
+// About Me section with desktop two-column layout
 ---
 
-<section class="about-me">
-    <!-- Added black banner with white "ABOUT ME" title at top -->
-    <div class="about-header">
-        <h2 class="section-title">ABOUT ME</h2>
-    </div>
+<section class="about-me" id="about">
+    <div class="about-container">
+        <div class="about-left">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="about-image">
+                <img src="/img/aboutme.png" alt="Carolina Lieja" />
+            </div>
+        </div>
 
-    <div class="about-image">
-        <img src="/img/aboutme.png" alt="Carolina Lieja" />
-    </div>
+        <div class="about-right">
+            <div class="about-intro">
+                <p class="about-text">
+                    Design is my way of asking better questions.<br />
+                    <strong
+                        >The answers? They're the kind that make people stop
+                        scrolling.</strong
+                    >
+                </p>
+            </div>
 
-    <!-- Updated content with new quote text and styling -->
-    <div class="about-content">
-        <p class="about-text">
-            Design is my way of asking better questions.<br />
-            <strong
-                >The answers? They're the kind that make people stop scrolling.</strong
-            >
-        </p>
+            <div class="experience-section">
+                <h3 class="subsection-title">EXPERIENCE</h3>
+                <p class="section-text">
+                    I'm a Devine student at Howest — a digital designer who
+                    thinks in color, code, and curiosity. I live in the space
+                    where design meets technology, crafting interactive
+                    experiences that feel as good as they look.
+                </p>
+            </div>
+
+            <div class="between-lines-section">
+                <h3 class="subsection-title">BETWEEN LINES</h3>
+                <p class="section-text">
+                    I am someone who thinks a lot, cares a lot, and creates from
+                    that place. I am curious about people, nature,
+                    stories, anything that makes the world feel a little more
+                    meaningful. I like slow discoveries, small surprises, and
+                    ideas that grow into something bigger. Design is just the
+                    way I translate who I am: thoughtful, playful, and always
+                    exploring.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
 <style>
     .about-me {
+        background: #101010;
         color: #fff;
         padding: 0;
-        position: relative; /* Added to position the pseudo-element */
-        margin-top: 60px; /* Added top margin to push black background down */
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
     }
 
-    /* New black banner for title */
-    .about-header {
-        background: #000;
-        padding: 30px 20px;
-        text-align: center; /* Centered the title */
+    /* Fixed two-column layout with proper vertical divider */
+    .about-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (min-width: 1024px) {
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            /* Center the entire content block with balanced margins */
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        /* Vertical divider line between left and right */
+        .about-container::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #fff;
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Left column styles */
+    .about-left {
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    @media (min-width: 1024px) {
+        .about-left {
+            /* Center title and image together vertically */
+            padding: 80px 60px 80px 80px;
+            gap: 40px;
+            justify-content: center;
+        }
     }
 
     .section-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 72px; /* Made title much larger and centered */
+        font-size: 72px;
         font-weight: 700;
+        /* Center title text on mobile */
         margin: 0;
         letter-spacing: 2px;
         color: #fff;
+        text-align: center;
     }
 
     .about-image {
         width: 100%;
-        height: auto;
+        max-width: 400px;
     }
 
     .about-image img {
         width: 100%;
         height: auto;
         display: block;
+        filter: grayscale(100%);
     }
 
-    /* Black background with white text for content */
-    .about-content {
-        background: #000;
-        padding: 40px 20px 60px;
+    /* Right column styles */
+    .about-right {
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (min-width: 1024px) {
+        .about-right {
+            /* Adjust right padding for balanced spacing */
+            padding: 80px 80px 80px 60px;
+            justify-content: center;
+        }
+    }
+
+    .about-intro {
+        padding-bottom: 40px;
+        border-bottom: 2px solid #fff;
+        margin-bottom: 40px;
     }
 
     .about-text {
@@ -77,15 +162,34 @@
         font-weight: 700;
     }
 
-    /* Added white horizontal line border at bottom */
-    .about-me::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 2px;
-        background: #fff;
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    .experience-section,
+    .between-lines-section {
+        padding-bottom: 40px;
+        border-bottom: 2px solid #fff;
+        margin-bottom: 40px;
+    }
+
+    .between-lines-section {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .subsection-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 20px 0;
+        letter-spacing: 1px;
+        color: #fff;
+    }
+
+    .section-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        margin: 0;
+        color: #fff;
     }
 </style>
