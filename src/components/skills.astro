@@ -8,14 +8,14 @@
     <div class="skill-items">
         <div class="skill-item">
             <div class="skill-header">
-                <h3 class="skill-title">WEB DESIGN</h3>
+                <h3 class="skill-title">WEB DESING</h3>
                 <span class="skill-number">01</span>
             </div>
             <div class="skill-list">
                 <p>Visual Storytelling</p>
-                <p>Visual Hierarchy</p>
-                <p>Brand Identity</p>
-                <p>Wireframing</p>
+                <p>Clear Navigation</p>
+                <p>Responsive Design</p>
+                <p>Modern Layouts</p>
             </div>
         </div>
 
@@ -28,21 +28,24 @@
                 <p>Visual Design</p>
                 <p>Branding</p>
                 <p>Typography</p>
-                <p>Color Theory</p>
+                <p>Visual Identity</p>
+                <p>Campaigns</p>
+                <p>Motion</p>
             </div>
         </div>
 
         <div class="skill-item">
             <div class="skill-header">
-                <h3 class="skill-title">UX/UI</h3>
+                <h3 class="skill-title">UX-UI</h3>
                 <span class="skill-number">03</span>
             </div>
             <div class="skill-list">
-                <p>Problem-solving</p>
-                <p>User Research</p>
-                <p>Information Architecture</p>
-                <p>Prototyping</p>
-                <p>Testing</p>
+                <p>Problem solving</p>
+                <p>Wireframing</p>
+                <p>Userflows</p>
+                <p>Wireflows & flows</p>
+                <p>Prototypes</p>
+                <p>Solution making</p>
             </div>
         </div>
 
@@ -53,8 +56,8 @@
             </div>
             <div class="skill-list">
                 <p>HTML/CSS</p>
-                <p>JS/TS</p>
                 <p>GSAP</p>
+                <p>JS</p>
             </div>
         </div>
     </div>
@@ -62,7 +65,7 @@
 
 <style>
     .skills {
-        background: #101010; // Changed from #000 to #101010
+        background: #101010;
         color: #fff;
         padding: 50px 20px;
     }
@@ -101,7 +104,7 @@
         font-weight: 600;
         margin: 0;
         letter-spacing: 0.5px;
-        color: #fff; 
+        color: #fff;
     }
 
     .skill-number {
@@ -122,7 +125,64 @@
         font-size: 14px;
         font-weight: 400;
         margin: 0;
-        text-align: right;
+        text-align: center;
         color: #ccc;
+    }
+
+    /* Desktop 4-column grid layout with vertical dividers */
+    @media (min-width: 1024px) {
+        .skills {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 120px;
+            margin-bottom: 80px;
+        }
+
+        .skill-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid #fff;
+        }
+
+        .skill-item {
+            border-top: none;
+            border-right: 1px solid #fff;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-item:last-child {
+            border-right: none;
+        }
+
+        .skill-header {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .skill-title {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .skill-number {
+            font-size: 48px;
+            color: #444;
+        }
+
+        .skill-list {
+            gap: 10px;
+        }
+
+        .skill-list p {
+            font-size: 16px;
+            text-align: left;
+        }
     }
 </style>

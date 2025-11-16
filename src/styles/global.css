@@ -62,3 +62,54 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Add desktop margins to text content for centered layout */
+@media (min-width: 768px) {
+
+  /* Text elements in sections get horizontal margins */
+  .intro-p,
+  .about-text,
+  .experience-text,
+  .between-text,
+  .overview-text,
+  .section-title,
+  .section-heading,
+  .project-title,
+  .design-heading,
+  .more-heading,
+  h1,
+  h2,
+  h3,
+  p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Specific overrides for centered sections */
+  .intro-text {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .overview-section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .experience-content,
+  .between-lines {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Project detail sections */
+  .project-details {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
