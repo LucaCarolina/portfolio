@@ -98,11 +98,14 @@
 
     .section-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 48px;
+        font-size: 72px;
         font-weight: 700;
-        margin: 0 0 60px 0;
+        margin: 0 auto 60px auto;
         letter-spacing: 1px;
         text-align: center;
+        /* Added explicit width and center alignment */
+        width: 100%;
+        display: block;
     }
 
     /* Updated layout to be mobile-first vertical stack */
@@ -189,7 +192,11 @@
     /* Desktop layout: horizontal with dividers */
     @media (min-width: 768px) {
         .section-title {
-            font-size: 72px;
+            font-size: 120px;
+            /* Added margin auto for horizontal centering */
+            margin: 0 auto 80px auto;
+            text-align: center;
+            width: 100%;
         }
 
         .work-items {
