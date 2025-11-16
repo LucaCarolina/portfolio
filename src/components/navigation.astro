@@ -9,6 +9,15 @@
             <span></span>
             <span></span>
         </button>
+        <!-- Added desktop menu for larger screens -->
+        <ul class="desktop-menu">
+            <li><a href="/#home" class="desktop-link">HOME</a></li>
+            <li><a href="/#about" class="desktop-link">ABOUT ME</a></li>
+            <li><a href="/#experience" class="desktop-link">EXPERIENCE</a></li>
+            <li><a href="/#works" class="desktop-link">WORKS</a></li>
+            <li><a href="/#skills" class="desktop-link">SKILLS</a></li>
+            <li><a href="/#contact" class="desktop-link">CONTACT</a></li>
+        </ul>
     </div>
 
     <div class="dropdown-menu" id="dropdownMenu">
@@ -42,6 +51,10 @@
         position: relative;
         z-index: 102;
         background: #fff;
+        /* Added max-width and centering for desktop */
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 40px;
     }
 
     .name {
@@ -54,6 +67,30 @@
         text-decoration: none;
         position: relative;
         z-index: 103;
+    }
+
+    /* Added desktop menu styles */
+    .desktop-menu {
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .desktop-link {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        color: #000;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .desktop-link:hover {
+        color: rgba(0, 0, 0, 0.5);
     }
 
     .menu-btn {
@@ -146,6 +183,21 @@
 
     .menu-link:hover {
         color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Added desktop breakpoint to show desktop menu and hide mobile menu */
+    @media (min-width: 768px) {
+        .desktop-menu {
+            display: flex;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+        }
     }
 </style>
 
