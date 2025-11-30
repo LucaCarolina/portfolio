@@ -1,0 +1,141 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navigation from "../../components/navigation.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+    const blogs = await getCollection("blogs");
+    return blogs.map((blog) => ({
+        params: { slug: blog.id },
+        props: { blog },
+    }));
+}
+
+const { blog } = Astro.props;
+const { Content } = await render(blog);
+---
+
+<BaseLayout pageTitle={`${blog.data.title} - Carolina Lima`}>
+    <Navigation />
+
+    <article class="blog-post">
+        <div class="container">
+            <header class="post-header">
+                <time class="post-date">{blog.data.date}</time>
+                <h1 class="post-title">{blog.data.title}</h1>
+            </header>
+
+            <div class="post-content">
+                <Content />
+            </div>
+
+            <footer class="post-footer">
+                <a href="/blogs" class="back-link">← Back to all posts</a>
+            </footer>
+        </div>
+    </article>
+</BaseLayout>
+
+<style>
+    .blog-post {
+        min-height: 100vh;
+        padding: 120px 20px 80px;
+        background: #fff;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin-bottom: 48px;
+    }
+
+    .post-date {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.5);
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .post-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #000;
+        margin: 0;
+    }
+
+    .post-content {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.7;
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    .post-content :global(h2) {
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 48px;
+        margin-bottom: 24px;
+        color: #000;
+    }
+
+    .post-content :global(h3) {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 36px;
+        margin-bottom: 16px;
+        color: #000;
+    }
+
+    .post-content :global(p) {
+        margin-bottom: 24px;
+    }
+
+    .post-footer {
+        margin-top: 64px;
+        padding-top: 32px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .back-link {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+        opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+        .blog-post {
+            padding: 100px 20px 60px;
+        }
+
+        .post-title {
+            font-size: 36px;
+        }
+
+        .post-content {
+            font-size: 16px;
+        }
+
+        .post-content :global(h2) {
+            font-size: 28px;
+        }
+
+        .post-content :global(h3) {
+            font-size: 20px;
+        }
+    }
+</style>
