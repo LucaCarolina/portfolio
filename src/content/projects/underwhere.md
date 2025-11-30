@@ -9,8 +9,8 @@ service: "Creative design"
 software: "Figma / Ps"
 year: "2025"
 designImages:
-  - "/img/underwhere-1.png"
-  - "/img/underwhere-2.png"
+  - "/portfolio/img/underwhere-1.png"
+  - "/portfolio/img/underwhere-2.png"
 ---
 
 ## Overview
