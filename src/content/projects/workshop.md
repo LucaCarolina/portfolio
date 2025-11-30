@@ -2,7 +2,7 @@
 id: 3
 title: "SURVIVAL WORKSHOP"
 description: "Interactive booking experience for a Survival & Bushcraft workshop with atmospheric design, illustrated animals, and playful interactions that make choosing time and extras intuitive and memorable."
-image: "/img/workshop.png"
+image: "/portfolio/img/workshop.png"
 label: "UX / UI"
 websiteUrl: "https://www.figma.com/proto/RVMpxDcKm9kvXK1x8l53HA/1DEV_CarolinaLuca_RESULT?page-id=0%3A1&node-id=2373-7028&viewport=369%2C337%2C0.05&t=zqxg6lpvlgNRDZGH-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=14%3A125&show-proto-sidebar=1"
 service: "Creative design"
