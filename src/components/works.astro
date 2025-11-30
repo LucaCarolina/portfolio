@@ -1,91 +1,53 @@
 ---
 // Works section
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <section class="works" id="works">
     <h2 class="section-title">WORKS</h2>
 
     <div class="work-items">
-        <a href="/projects/thrive" class="work-item">
-            <div class="work-header">
-                <div>
-                    <h3 class="work-title">THRIVE</h3>
-                    <p class="work-subtitle">Digital Campaign</p>
-                </div>
-                <svg
-                    class="arrow-icon"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="black"
-                        stroke-width="2"></path>
-                </svg>
-            </div>
-            <div class="work-image">
-                <img src="/img/thrive.png" alt="Thrive Project" />
-            </div>
-        </a>
+        {
+            projects.map((project, index) => (
+                <>
+                    <a href={`/projects/${project.slug}`} class="work-item">
+                        <div class="work-header">
+                            <div>
+                                <h3 class="work-title">{project.data.title}</h3>
+                                <p class="work-subtitle">
+                                    {project.data.label}
+                                </p>
+                            </div>
+                            <svg
+                                class="arrow-icon"
+                                width="40"
+                                height="40"
+                                viewBox="0 0 40 40"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M10 30L30 10M30 10H10M30 10V30"
+                                    stroke="black"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                        </div>
+                        <div class="work-image">
+                            <img
+                                src={project.data.image || "/placeholder.svg"}
+                                alt={project.data.title}
+                            />
+                        </div>
+                    </a>
 
-        <!-- Added vertical divider for desktop -->
-        <div class="divider"></div>
-
-        <a href="/projects/workshop" class="work-item">
-            <div class="work-header">
-                <div>
-                    <h3 class="work-title">SURVIVAL WORKSHOP</h3>
-                    <p class="work-subtitle">UX / UI</p>
-                </div>
-                <svg
-                    class="arrow-icon"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="black"
-                        stroke-width="2"></path>
-                </svg>
-            </div>
-            <div class="work-image">
-                <img src="/img/workshop.png" alt="Survival Workshop" />
-            </div>
-        </a>
-
-        <!-- Added vertical divider for desktop -->
-        <div class="divider"></div>
-
-        <a href="/projects/underwhere" class="work-item">
-            <div class="work-header">
-                <div>
-                    <h3 class="work-title">THE UNDERWHERE</h3>
-                    <p class="work-subtitle">Story Telling</p>
-                </div>
-                <svg
-                    class="arrow-icon"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M10 30L30 10M30 10H10M30 10V30"
-                        stroke="black"
-                        stroke-width="2"></path>
-                </svg>
-            </div>
-            <div class="work-image">
-                <img src="/img/underwhere.png" alt="Survival Workshop Story" />
-            </div>
-        </a>
+                    {/* Add divider between items except after last one */}
+                    {index < projects.length - 1 && <div class="divider" />}
+                </>
+            ))
+        }
     </div>
 </section>
 

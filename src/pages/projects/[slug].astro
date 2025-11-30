@@ -2,9 +2,26 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navigation from "../../components/navigation.astro";
 import ContactMe from "../../components/contactme.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+    console.log(
+        "[v0] Project static paths:",
+        projects.map((p) => ({ slug: p.id, title: p.data.title })),
+    );
+    return projects.map((project) => ({
+        params: { slug: project.id.replace(".md", "") },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+console.log("[v0] Rendering project:", project.id, project.data.title);
+const { Content } = await render(project);
 ---
 
-<BaseLayout pageTitle="The Underwhere - Carolina Lima">
+<BaseLayout pageTitle={`${project.data.title} - Carolina Lima`}>
     <Navigation />
     <a href="/#works" class="back-button">
         <svg
@@ -24,34 +41,39 @@ import ContactMe from "../../components/contactme.astro";
         Back
     </a>
     <div class="project-page">
-        <h1 class="project-title">THE UNDERWHERE</h1>
+        <h1 class="project-title">{project.data.title}</h1>
 
         <div class="hero-section">
             <img
-                src="/img/underwhere.png"
-                alt="The Underwhere Project Hero"
+                src={project.data.image || "/placeholder.svg"}
+                alt={`${project.data.title} Project Hero`}
                 class="hero-image"
             />
-            <a
-                href="https://www.figma.com/design/OovalNo5HCXoFlFlWrK7kW/LucaCarolina_Int2?node-id=478-9040&t=kthmUl8PiCtDeAmT-1"
-                class="visit-link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Visit the website
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M5 15L15 5M15 5H5M15 5V15"
-                        stroke="currentColor"
-                        stroke-width="2"></path>
-                </svg>
-            </a>
+            {
+                project.data.websiteUrl && (
+                    <a
+                        href={project.data.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="visit-link"
+                    >
+                        Visit the website
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M5 15L15 5M15 5H5M15 5V15"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            />
+                        </svg>
+                    </a>
+                )
+            }
         </div>
 
         <div class="separator"></div>
@@ -60,61 +82,80 @@ import ContactMe from "../../components/contactme.astro";
             <div class="detail-row">
                 <div class="detail-column">
                     <p class="detail-label">Challenge:</p>
-                    <p class="detail-value">StoryTelling</p>
+                    <p class="detail-value">{project.data.label}</p>
                 </div>
                 <div class="detail-column">
                     <p class="detail-label">Service:</p>
-                    <p class="detail-value">Creative design</p>
+                    <p class="detail-value">{project.data.service || "N/A"}</p>
                 </div>
             </div>
             <div class="detail-row">
                 <div class="detail-column">
                     <p class="detail-label">Software:</p>
-                    <p class="detail-value">Figma / Ps</p>
+                    <p class="detail-value">{project.data.software || "N/A"}</p>
                 </div>
                 <div class="detail-column">
                     <p class="detail-label">Year:</p>
-                    <p class="detail-value">2025</p>
+                    <p class="detail-value">{project.data.year || "N/A"}</p>
                 </div>
             </div>
         </div>
 
-        <div class="overview-section">
-            <h2 class="section-heading">Overview</h2>
-            <p class="overview-text">
-                I created an interactive website called The Underwhere, built
-                around the idea of giving forgotten objects a second life. For
-                this project, I chose a common item everyone owns but rarely
-                thinks about: underwear. By turning old undies into characters,
-                tools, and playful creations, the concept reframes them as
-                something with creative potential rather than waste. The site
-                uses humor, storytelling, and interactive elements to guide
-                users through three alternative uses, all tied together under
-                one quirky world. The goal was to encourage people to rethink
-                everyday items, explore upcycling in a fun way, and show how
-                even the most ordinary object can spark imagination.
-            </p>
+        <div class="overview-section markdown-content">
+            <Content />
         </div>
 
-        <div class="design-overview-section">
-            <h2 class="design-heading">DESIGN OVERVIEW</h2>
-            <div class="design-grid">
-                <img src="/img/underwhere-1.png" alt="Underwhere Design 1" />
-                <img src="/img/underwhere-2.png" alt="Underwhere Design 2" />
-            </div>
-        </div>
+        {
+            project.data.designImages &&
+                project.data.designImages.length > 0 && (
+                    <div class="design-overview-section">
+                        <h2 class="design-heading">DESIGN OVERVIEW</h2>
+                        <div class="design-grid">
+                            <div class="design-column">
+                                <img
+                                    src={
+                                        project.data.designImages[0] ||
+                                        "/placeholder.svg"
+                                    }
+                                    alt={`${project.data.title} Design 1`}
+                                />
+                            </div>
+                            <div class="design-column">
+                                {project.data.designImages
+                                    .slice(1)
+                                    .map((img: string, index: number) => (
+                                        <img
+                                            src={img || "/placeholder.svg"}
+                                            alt={`${project.data.title} Design ${index + 2}`}
+                                        />
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+        }
 
         <div class="separator"></div>
 
         <div class="more-works-section">
             <h2 class="more-heading">MORE WORKS</h2>
             <div class="more-works-grid">
-                <a href="/projects/thrive" class="more-work-item">
-                    <img src="/img/thrive.png" alt="Thrive" />
-                </a>
-                <a href="/projects/workshop" class="more-work-item">
-                    <img src="/img/workshop.png" alt="Survival Workshop" />
-                </a>
+                {
+                    (await getCollection("projects"))
+                        .filter((p) => p.id !== project.id)
+                        .slice(0, 2)
+                        .map((p) => (
+                            <a
+                                href={`/projects/${p.id.replace(".md", "")}`}
+                                class="more-work-item"
+                            >
+                                <img
+                                    src={p.data.image || "/placeholder.svg"}
+                                    alt={p.data.title}
+                                />
+                            </a>
+                        ))
+                }
             </div>
         </div>
     </div>
@@ -212,14 +253,20 @@ import ContactMe from "../../components/contactme.astro";
         margin-bottom: 60px;
     }
 
-    .section-heading {
+    .markdown-content :global(h2) {
         font-family: "Space Grotesk", sans-serif;
         font-size: 24px;
         font-weight: 700;
-        margin: 60px 0 40px 0;
-        display: block;
-        width: 100%;
+        margin: 80px 0 40px 0;
         text-align: center;
+    }
+
+    .markdown-content :global(p) {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
     }
 
     .design-overview-section {
@@ -242,15 +289,21 @@ import ContactMe from "../../components/contactme.astro";
     .design-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 800px;
+        gap: 20px;
+        max-width: 1200px;
         margin: 0 auto;
+    }
+
+    .design-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .design-grid img {
         width: 100%;
         height: auto;
-        border-radius: 8px;
+        border-radius: 0;
     }
 
     .more-works-section {
@@ -292,51 +345,6 @@ import ContactMe from "../../components/contactme.astro";
         transform: scale(1.05);
     }
 
-    .contact-section {
-        background: #000;
-        color: #fff;
-        padding: 60px 20px 40px;
-        margin: 60px -20px 0;
-        text-align: center;
-    }
-
-    .contact-heading {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 48px;
-        font-weight: 700;
-        margin: 0 0 40px 0;
-        letter-spacing: 1px;
-    }
-
-    .contact-links {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-
-    .contact-link,
-    .contact-email {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        color: #fff;
-        text-decoration: none;
-        padding: 15px 0;
-        border-top: 1px solid #333;
-    }
-
-    .contact-email {
-        border-bottom: 1px solid #333;
-    }
-
-    .copyright {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        color: #666;
-        margin: 20px 0 0;
-    }
-
     .back-button {
         position: absolute;
         top: 80px;
@@ -362,28 +370,22 @@ import ContactMe from "../../components/contactme.astro";
     }
 
     @media (min-width: 768px) {
-        .back-button {
-            left: 30px;
-        }
-
         .project-page {
             padding: 80px 40px 60px;
         }
 
         .design-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .contact-section {
-            margin: 60px -40px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: start;
         }
 
         .design-overview-section {
             margin: 0 -40px;
         }
 
-        .more-works-grid {
-            grid-template-columns: repeat(2, 1fr);
+        .back-button {
+            left: 30px;
         }
     }
 </style>
