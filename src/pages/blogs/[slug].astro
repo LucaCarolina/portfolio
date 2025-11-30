@@ -5,13 +5,18 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const blogs = await getCollection("blogs");
+    console.log(
+        "[v0] Blog static paths:",
+        blogs.map((b) => ({ slug: b.id, title: b.data.title })),
+    );
     return blogs.map((blog) => ({
-        params: { slug: blog.id },
+        params: { slug: blog.id.replace(".md", "") },
         props: { blog },
     }));
 }
 
 const { blog } = Astro.props;
+console.log("[v0] Rendering blog:", blog.id, blog.data.title);
 const { Content } = await render(blog);
 ---
 
