@@ -103,6 +103,79 @@ const { Content } = await render(blog);
         margin-bottom: 24px;
     }
 
+    /* Added styles for bold text, lists, and other markdown elements */
+    .post-content :global(strong) {
+        font-weight: 600;
+        color: #000;
+    }
+
+    .post-content :global(em) {
+        font-style: italic;
+    }
+
+    .post-content :global(ul),
+    .post-content :global(ol) {
+        margin-bottom: 24px;
+        padding-left: 32px;
+    }
+
+    .post-content :global(ul) {
+        list-style-type: disc;
+    }
+
+    .post-content :global(ol) {
+        list-style-type: decimal;
+    }
+
+    .post-content :global(li) {
+        margin-bottom: 12px;
+        line-height: 1.7;
+    }
+
+    .post-content :global(li strong) {
+        font-weight: 600;
+        color: #000;
+    }
+
+    .post-content :global(code) {
+        font-family: "Courier New", monospace;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .post-content :global(pre) {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin-bottom: 24px;
+    }
+
+    .post-content :global(pre code) {
+        background: none;
+        padding: 0;
+    }
+
+    .post-content :global(blockquote) {
+        border-left: 4px solid #000;
+        padding-left: 20px;
+        margin: 24px 0;
+        color: rgba(0, 0, 0, 0.7);
+        font-style: italic;
+    }
+
+    .post-content :global(a) {
+        color: #000;
+        text-decoration: underline;
+        transition: opacity 0.2s ease;
+    }
+
+    .post-content :global(a:hover) {
+        opacity: 0.7;
+    }
+
     .post-footer {
         margin-top: 64px;
         padding-top: 32px;
@@ -141,6 +214,12 @@ const { Content } = await render(blog);
 
         .post-content :global(h3) {
             font-size: 20px;
+        }
+        
+        /* Added responsive styles for lists */
+        .post-content :global(ul),
+        .post-content :global(ol) {
+            padding-left: 24px;
         }
     }
 </style>
