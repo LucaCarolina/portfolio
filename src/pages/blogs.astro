@@ -5,30 +5,35 @@ import { getCollection } from "astro:content";
 
 const blogs = await getCollection("blogs");
 // Sort blogs by date (newest first)
-const sortedBlogs = blogs.sort((a, b) => 
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+const sortedBlogs = blogs.sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
 ---
 
 <BaseLayout pageTitle="Blog - Carolina Lima">
     <Navigation />
-    
+
     <section class="blogs-section">
         <div class="container">
             <h1 class="page-title">Blog</h1>
             <p class="page-subtitle">Thoughts, ideas, and insights</p>
-            
+
             <div class="blogs-grid">
-                {sortedBlogs.map((blog) => (
-                    <article class="blog-card">
-                        <a href={`/blogs/${blog.slug}`} class="blog-link">
-                            <time class="blog-date">{blog.data.date}</time>
-                            <h2 class="blog-title">{blog.data.title}</h2>
-                            <p class="blog-excerpt">{blog.data.excerpt}</p>
-                            <span class="read-more">Read more →</span>
-                        </a>
-                    </article>
-                ))}
+                {
+                    sortedBlogs.map((blog) => (
+                        <article class="blog-card">
+                            <a
+                                href={`/portfolio/blogs/${blog.slug}`}
+                                class="blog-link"
+                            >
+                                <time class="blog-date">{blog.data.date}</time>
+                                <h2 class="blog-title">{blog.data.title}</h2>
+                                <p class="blog-excerpt">{blog.data.excerpt}</p>
+                                <span class="read-more">Read more →</span>
+                            </a>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>
