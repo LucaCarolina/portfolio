@@ -9,10 +9,10 @@ service: "Creative design"
 software: "Figma / AI"
 year: "2025"
 designImages:
-  - "/img/workshop-page1.png"
-  - "/img/workshop-page2.png"
-  - "/img/workshop-page3.png"
-  - "/img/workshop-page4.png"
+  - "/portfolio/img/workshop-page1.png"
+  - "/portfolio/img/workshop-page2.png"
+  - "/portfolio/img/workshop-page3.png"
+  - "/portfolio/img/workshop-page4.png"
 ---
 
 ## Overview
