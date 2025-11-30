@@ -2,7 +2,7 @@
 id: 2
 title: "THE UNDERWHERE"
 description: "Interactive storytelling website giving forgotten objects a second life by transforming old underwear into characters, tools, and playful creations to encourage creative upcycling."
-image: "/img/underwhere.png"
+image: "/portfolio/img/underwhere.png"
 label: "StoryTelling"
 websiteUrl: "https://www.figma.com/design/OovalNo5HCXoFlFlWrK7kW/LucaCarolina_Int2?node-id=478-9040&t=kthmUl8PiCtDeAmT-1"
 service: "Creative design"

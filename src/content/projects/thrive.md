@@ -2,7 +2,7 @@
 id: 1
 title: "THRIVE"
 description: "Digital campaign website highlighting THRIVE's flavors through the lens of subtle body signals people often ignore, helping them tune in and feel better."
-image: "/img/thrive.png"
+image: "/portfolio/img/thrive.png"
 label: "Digital Campaign"
 websiteUrl: "https://www.figma.com/proto/HfB9mrIhrXupCsCVBIpfd1/Thrive-Campaign?page-id=123%3A1069&node-id=568-3063&viewport=-1185%2C370%2C0.05&t=2ClLdMr0UNZ6NNUa-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=568%3A3063"
 service: "Creative design"
